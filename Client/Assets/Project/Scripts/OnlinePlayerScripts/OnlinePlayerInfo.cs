@@ -44,7 +44,8 @@ public class OnlinePlayerInfo : MonoBehaviour
 		if (x != null) x.GetComponent<WorldspaceUI_Menager>().MakeUI(transform);
 		else Debug.Log("Objekt \"WorldspaceUIs\" not found!");
 
-
+		// GitHub Test
+		// asgaer
 
 		// ------------------ Simulierte Netzwerkschnittstelle ------------------
 		Netzwerk_Simulator.NetzwerkStream += Stream;
