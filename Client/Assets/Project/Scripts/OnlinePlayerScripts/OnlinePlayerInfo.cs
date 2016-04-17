@@ -81,6 +81,10 @@ public class OnlinePlayerInfo : MonoBehaviour
 			break;
 		}
 	}
+	void OnDestroy()
+	{
+		Netzwerk_Simulator.NetzwerkStream -= Stream;
+	}
 	// ----------------------------------------------------------------------
 
 	void Update()

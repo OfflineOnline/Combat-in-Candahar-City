@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Project\Scripts\AnimatorPlayer.cs" />
+     <Compile Include="Assets\Project\Scripts\FreeCameraMovement.cs" />
      <Compile Include="Assets\Project\Scripts\MainCameraMenager.cs" />
      <Compile Include="Assets\Project\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Project\Scripts\Netzwerk_Simulator.cs" />
