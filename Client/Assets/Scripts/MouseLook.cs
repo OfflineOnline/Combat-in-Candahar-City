@@ -20,7 +20,26 @@ public class MouseLook : MonoBehaviour
 	public bool smooth;
 	public float smoothTime = 5f;
 
-	public Transform tr_horizontal, tr_vertical, player_hor, player_ver;
+	private Transform tr_horizontal, tr_vertical, player_hor, player_ver;
+
+	public Transform Tr_horizontal
+	{
+		get { return tr_horizontal; }
+		set
+		{
+			tr_horizontal = value;
+			m_CharacterTargetRot = Quaternion.Euler(0f, value.localRotation.eulerAngles.y, 0f);
+		}
+	}
+	public Transform Tr_vertical
+	{
+		get { return tr_vertical; }
+		set
+		{
+			tr_vertical = value;
+			m_CameraTargetRot = Quaternion.Euler(value.localRotation.eulerAngles.x, 0f, 0f);
+		}
+	}
 
 	private Quaternion m_CharacterTargetRot;
 	private Quaternion m_CameraTargetRot;
@@ -38,8 +57,8 @@ public class MouseLook : MonoBehaviour
 
 	public void PlayerPos()
 	{
-		tr_horizontal = player_hor;
-		tr_vertical = player_ver;
+		Tr_horizontal = player_hor;
+		Tr_vertical = player_ver;
 	}
 
 	void Update()

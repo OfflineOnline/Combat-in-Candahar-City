@@ -8,10 +8,8 @@ public class SpectatorCollide : MonoBehaviour
 	 * Dabei wird nach Hindernissen zwischen Objekt und dem ParrentObject gepüft.
 	 * Die Höhe und Breite der MainCamera in Unity's Worldspace wird auch beachtet.
 	 */
-	public float maxDistance = 3f;
-
-	private Camera myCam;
-	public bool test;
+	public float maxDistance = 3f;		// Wie weit das Objekt vom ParrentObject weg ist, wenn kein Hindernis da ist
+	private Camera myCam;				// Referenz auf die MainKamera
 
 	void Start()
 	{
@@ -21,7 +19,7 @@ public class SpectatorCollide : MonoBehaviour
 
 	void Update()
 	{
-		// Kamera auf der lokalen Z-Achse positionieren
+		// Object auf der lokalen Z-Achse positionieren
 		RaycastHit hitInfo;
 		if (Physics.BoxCast(transform.parent.position, CameraBox(), transform.parent.localToWorldMatrix * transform.localPosition, out hitInfo, transform.rotation, maxDistance, 1))
 		{
@@ -30,7 +28,7 @@ public class SpectatorCollide : MonoBehaviour
 		}
 		else
 		{
-			// Position auf die Maximaldistanz zwischen Objekt und Parrent setzen
+			// Position auf die Maximaldistanz zwischen Objekt und ParrentObjekt setzen
 			transform.localPosition = new Vector3 (0f, 0f, -maxDistance);
 		}
 	}
@@ -40,7 +38,7 @@ public class SpectatorCollide : MonoBehaviour
 		// Die Größe der NearClipPlane von der MainCamera im Worldspace herrausfinden
 		Vector3 size = myCam.ViewportToWorldPoint(new Vector3(1f, 1f, myCam.nearClipPlane)) - myCam.ViewportToWorldPoint(new Vector3(0f, 0f, myCam.nearClipPlane));
 
-		// Die größe der Box für den "Physics.BoxCast(...)" zurückgeben
+		// Die größe der NearClipPlane für den "Physics.BoxCast(...)" zurückgeben
 		return new Vector3(size.x / 2, size.y / 2, 0.05f);
 	}
 }
